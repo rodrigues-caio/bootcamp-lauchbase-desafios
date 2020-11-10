@@ -61,11 +61,29 @@
   position: relative;
 }
 
+.modal.maximaze {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
 .modal a {
   position: absolute;
+
+  cursor: pointer;
+}
+
+.modal a#close {
   right: 15px;
   top: 15px;
-  cursor: pointer;
+}
+
+.modal a#maximaze {
+  left: 15px;
+}
+
+.modal a#minimaze {
+  left: 50px;
 }
 
 iframe {

@@ -11,7 +11,21 @@ for (let card of cards) {
   });
 }
 
-modalContainer.querySelector("a").addEventListener("click", () => {
+modalContainer.querySelector("#close").addEventListener("click", () => {
   modalContainer.classList.remove("active");
   modalContainer.querySelector("iframe").src = "";
+});
+
+/**Implementation modal maximaze */
+const modal = document.querySelector(".modal");
+const maximaze = document.querySelector("#maximaze");
+
+maximaze.addEventListener("click", () => {
+  modal.classList.add("maximaze");
+});
+
+modal.querySelector("#minimaze").addEventListener("click", () => {
+  if (modal.classList.contains("maximaze")) {
+    modal.classList.remove("maximaze");
+  }
 });

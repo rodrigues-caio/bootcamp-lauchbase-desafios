@@ -1,0 +1,58 @@
+:root {
+  --color-purple: #7159c1;
+  --color-green: #2ac22a;
+}
+
+.container {
+  text-align: center;
+  padding: 32px;
+}
+
+.container img {
+  border-radius: 50%;
+  border: 5px solid var(--color-green);
+}
+
+.container h1 {
+  font-size: 42px;
+  line-height: 52px;
+  margin: 20px 0;
+  color: var(--color-purple);
+}
+
+.container p {
+  max-width: 500px;
+  font-size: 18px;
+  line-height: 28px;
+  margin: 24px auto;
+  opacity: 0.7;
+}
+
+.container ul {
+  list-style: none;
+}
+
+.container ul li {
+  color: var(--color-green);
+  font-weight: bold;
+  font-size: 18px;
+  margin: 12px 0;
+}
+
+.links {
+  margin: 45px 0;
+}
+
+.links a {
+  margin: 0 22px;
+  color: rgb(70, 67, 67);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-purple);
+  font-size: 18px;
+  transition: color 700ms;
+}
+
+.links a:hover {
+  color: var(--color-purple);
+  font-weight: bold;
+}

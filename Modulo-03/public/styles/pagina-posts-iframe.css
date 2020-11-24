@@ -1,0 +1,98 @@
+.container {
+  width: 70%;
+  margin: 0 auto;
+  padding: 32px;
+  gap: 8px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card {
+  width: 100%;
+  text-align: center;
+  background-color: rgb(178, 211, 163);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.container .card img {
+  width: 100%;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.container .card-info {
+  width: 100%;
+}
+
+.container .card-info h2 {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  margin: 8px auto;
+  opacity: 0.8;
+}
+
+.container .card-info span {
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 1px;
+  opacity: 0.5;
+}
+
+/* === MODAL === */
+.modal-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal {
+  width: 90%;
+  height: 90%;
+  margin: 5vh auto;
+  background-color: #fff;
+
+  position: relative;
+}
+
+.modal.maximaze {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.modal a {
+  position: absolute;
+
+  cursor: pointer;
+}
+
+.modal a#close {
+  right: 15px;
+  top: 15px;
+}
+
+.modal a#maximaze {
+  left: 15px;
+}
+
+.modal a#minimaze {
+  left: 50px;
+}
+
+iframe {
+  width: 100%;
+  height: 90%;
+  margin: 5vh auto;
+}
+
+.modal-container.active {
+  opacity: 1;
+  visibility: visible;
+}

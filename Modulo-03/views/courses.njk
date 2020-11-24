@@ -7,49 +7,23 @@
 <title>Conteúdos!</title>
 {% endblock %} {% block content %}
 <main class="container">
-  <div
-    class="card"
-    id="construindo-um-app-com-mapas-usando-react-native-maps-e-mapbox"
-  >
-    <img
-      src="https://blog.rocketseat.com.br/content/images/2020/10/teste.jpg"
-      alt="Construindo App com Mapa usando React Native Maps e MapBox"
-    />
-    <div class="card-info">
-      <h2>Construindo App com Mapa usando React Native Maps e MapBox</h2>
-      <p>por <strong>Thiago Marinho</strong></p>
-      <span>8 MIN DE LEITURA</span>
+  {% for course in courses %}
+    <div
+      class="card"
+      id="{{course.id}}"
+    >
+      <img
+        src="{{course.image}}"
+        alt="{{course.title}}"
+      />
+      <div class="card-info">
+        <h2>{{course.title}}</h2>
+        <p>por <strong>{{course.author}}</strong></p>
+        <span>{{course.duration}}</span>
+      </div>
     </div>
-  </div>
-
-  <div
-    class="card"
-    id="dark-mode-com-css-mudando-a-aparencia-do-blog-de-maneira-simples-e-rapida"
-  >
-    <img
-      src="https://blog.rocketseat.com.br/content/images/2020/10/dark-mode-com-css-mudando-a-aparencia-do-blog-de-maneira-simples-e-rapida.jpg"
-      alt="Dark Mode com CSS — mudando a aparência do Blog de maneira simples e rápida"
-    />
-    <div class="card-info">
-      <h2>
-        Dark Mode com CSS — mudando a aparência do Blog de maneira simples
-      </h2>
-      <p>por <strong>Thiago Marinho</strong></p>
-      <span>3 MIN DE LEITURA</span>
-    </div>
-  </div>
-
-  <div class="card" id="upload-de-imagens-no-s3-da-aws-com-node-js">
-    <img
-      src="https://blog.rocketseat.com.br/content/images/2020/09/upload-de-imagens-no-s3-da-aws-com-node-js.png"
-      alt="Upload de imagens no S3 da AWS com Node.js"
-    />
-    <div class="card-info">
-      <h2>Upload de imagens no S3 da AWS com Node.js</h2>
-      <p>por <strong>Thiago Marinho</strong></p>
-      <span>10 MIN DE LEITURA</span>
-    </div>
-  </div>
+  {% endfor %}
+ 
 </main>
 
 <div class="modal-container">

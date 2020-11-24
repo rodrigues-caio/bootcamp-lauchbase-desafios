@@ -3,19 +3,38 @@ const nunjucks = require('nunjucks');
 
 const server = express();
 
+const data = require('./data');
+
 server.use(express.static('public'));
 server.set('view engine', 'njk');
 
 nunjucks.configure('views', {
   express: server,
+  autoescape: false,
 });
 
 server.get('/', (request, response) => {
-  return response.render('courses');
+  return response.render('courses', { courses: data });
 });
 
 server.get('/about', (request, response) => {
-  return response.render('about');
+  const about = {
+    avatar_url: 'https://avatars3.githubusercontent.com/u/69590972?s=200&v=4',
+    name: 'Rocketseat',
+    description:
+      'Empresa educacional com o objetivo de formar novos profissionais na área detecnologia, voltado para o desenvolvimento de software web.',
+    tecs: ['Javascript', 'HTML', 'CSS'],
+    links: [
+      {
+        name: 'Instagram',
+        url: 'https://www.instagram.com/rocketseat_oficial/',
+      },
+      { name: 'Github', url: 'https://github.com/rocketseat-education' },
+      { name: 'Linkedin', url: 'https://www.linkedin.com/school/rocketseat/' },
+    ],
+  };
+
+  return response.render('about', { about });
 });
 
 server.use((request, response) => {

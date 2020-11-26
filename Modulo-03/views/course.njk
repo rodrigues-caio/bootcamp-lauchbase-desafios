@@ -1,0 +1,26 @@
+{% extends 'layout.njk' %} {% block head %}
+<link rel="stylesheet" href="/styles/pagina-posts-iframe.css" />
+
+<title>{{course.title}}</title>
+{% endblock %} 
+
+{% block content %}
+<main class="single-course">
+  <h1>{{course.title}}</h1>
+    <div
+      class="card single-course"
+      id="{{course.id}}"
+    >
+      <img
+        src="{{course.image}}"
+        alt="{{course.title}}"
+      />
+      <div class="single-card-info">
+        
+        <p>por <strong>{{course.author}}</strong></p>
+        <span>{{course.duration}}</span>
+      </div>
+    </div>
+ 
+</main>
+{% endblock %}

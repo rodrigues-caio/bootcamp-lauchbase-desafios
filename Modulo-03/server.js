@@ -10,6 +10,7 @@ server.set('view engine', 'njk');
 
 nunjucks.configure('views', {
   express: server,
+  noCache: true,
   autoescape: false,
 });
 
@@ -35,6 +36,18 @@ server.get('/about', (request, response) => {
   };
 
   return response.render('about', { about });
+});
+
+server.get('/courses/:id_course', (request, response) => {
+  const { id_course } = request.params;
+
+  const course = data.find((course) => course.id === id_course);
+
+  if (!course) {
+    return response.status(404).json({ error: 'Course not found.' });
+  }
+
+  return response.render('course', { course });
 });
 
 server.use((request, response) => {

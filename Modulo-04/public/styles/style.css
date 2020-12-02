@@ -1,5 +1,9 @@
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap';
 
+:root {
+  --primary-color: #66b6eb;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +18,7 @@ body {
 
 header {
   padding: 30px;
-  background: #66b6eb;
+  background: var(--primary-color);
   text-align: center;
 }
 
@@ -37,7 +41,7 @@ header {
   content: '';
   width: 0;
   height: 2px;
-  background-color: #fff;
+  background-color: #ff0077a1;
   position: absolute;
   left: 0;
   bottom: -5px;
@@ -46,4 +50,75 @@ header {
 .links a:hover::after {
   width: 100%;
   transition: width 400ms ease-in-out;
+}
+
+/* === CARD === */
+.card {
+  width: 800px;
+  min-height: 400px;
+
+  margin: 45px auto;
+
+  background-color: var(--primary-color);
+
+  display: grid;
+  grid-template-columns: 40% 60%;
+
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+
+  animation: down 400ms ease;
+}
+
+@keyframes down {
+  from {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* === Details === */
+.details {
+  padding: 32px;
+}
+
+.details .item {
+  border-bottom: 1px solid rgb(212, 200, 200);
+  padding: 16px 0;
+}
+
+.details .item:last-child {
+  border: none;
+}
+
+.details h3,
+.details .item div:nth-child(1) {
+  color: #555;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.7px;
+}
+
+.details .item div:nth-child(2) {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fffffff3;
+}
+
+.details h3 {
+  text-transform: uppercase;
+  color: #ff0040c0;
+}
+.details .item span {
+  padding: 8px 16px;
+  background-color: #ff0077a1;
+  border-radius: 16px;
+  font-size: 12px;
+  margin-right: 4px;
+  margin-top: 8px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
 }

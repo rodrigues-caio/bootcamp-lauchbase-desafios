@@ -2,6 +2,7 @@
 
 :root {
   --primary-color: #66b6eb;
+  --secundary-color: #ff0040c0;
 }
 
 * {
@@ -121,4 +122,46 @@ header {
   display: inline-block;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+/*=== PAGE CREATE TEACHERS ===*/
+input {
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  color: #555;
+}
+
+input[type='radio'] {
+  width: initial;
+  margin-right: 4px;
+}
+
+input::placeholder {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  border-radius: 4px;
+  background-color: white;
+}
+
+button[type='submit'] {
+  width: 100%;
+  padding: 8px 16px;
+  margin-top: 32px;
+  color: white;
+  background-color: var(--secundary-color);
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
 }

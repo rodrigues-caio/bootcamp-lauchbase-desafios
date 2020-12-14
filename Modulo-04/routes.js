@@ -18,6 +18,10 @@ routes.get('/teachers/create', (request, response) => {
 
 routes.post('/teachers', teachers.create);
 
+routes.get('/teachers/:id', teachers.show);
+
+routes.get('/teachers/:id/edit', teachers.edit);
+
 routes.get((request, response) => {
   return response.status(404).render('not-found');
 });

@@ -1,6 +1,8 @@
 const fs = require('fs');
 const data = require('./data.json');
 
+const { age } = require('./utils');
+
 module.exports = {
   create: (request, response) => {
     const keys = Object.keys(request.body);
@@ -42,5 +44,32 @@ module.exports = {
 
       return response.redirect('/teachers');
     });
+  },
+
+  show: (request, response) => {
+    const { id } = request.params;
+
+    const teacherFounded = data.teachers.find(
+      (teacher) => teacher.id == Number(id)
+    );
+
+    if (!teacherFounded) {
+      return response.json({ error: 'Teacher not found.' });
+    }
+
+    const teacher = {
+      ...teacherFounded,
+      age: age(teacherFounded.birth),
+      subjects: teacherFounded.subjects.split(','),
+      created_at: Intl.DateTimeFormat('en-GB').format(
+        teacherFounded.created_at
+      ),
+    };
+
+    return response.render('teachers/show', { teacher });
+  },
+
+  edit: (request, response) => {
+    return response.render('teachers/edit');
   },
 };

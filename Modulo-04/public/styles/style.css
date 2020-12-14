@@ -155,7 +155,8 @@ select {
   background-color: white;
 }
 
-button[type='submit'] {
+button[type='submit'],
+a.button {
   width: 100%;
   padding: 8px 16px;
   margin-top: 32px;
@@ -164,4 +165,11 @@ button[type='submit'] {
   font-weight: bold;
   font-size: 16px;
   border-radius: 4px;
+}
+
+a.button {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background-color: #212d97;
 }

@@ -25,4 +25,14 @@ module.exports = {
     // 5 - 5 = 0 // fiz 24
     // 6 - 5 = 1
   },
+
+  date: (timestamp) => {
+    const birthDate = new Date(timestamp);
+
+    const year = birthDate.getUTCFullYear();
+    const month = `0${Number(birthDate.getUTCMonth() + 1)}`.split(-2);
+    const day = `0${birthDate.getUTCDate()}`.slice(-2);
+
+    return `${year}-${month}-${day}`;
+  },
 };

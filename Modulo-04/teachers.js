@@ -1,7 +1,7 @@
 const fs = require('fs');
 const data = require('./data.json');
 
-const { age } = require('./utils');
+const { age, date } = require('./utils');
 
 module.exports = {
   create: (request, response) => {
@@ -70,6 +70,21 @@ module.exports = {
   },
 
   edit: (request, response) => {
-    return response.render('teachers/edit');
+    const { id } = request.params;
+
+    const teacherFounded = data.teachers.find(
+      (teacher) => teacher.id == Number(id)
+    );
+
+    if (!teacherFounded) {
+      return response.json({ error: 'Teacher not found' });
+    }
+
+    const teacher = {
+      ...teacherFounded,
+      birth: date(teacherFounded.birth),
+    };
+
+    return response.render('teachers/edit', { teacher });
   },
 };

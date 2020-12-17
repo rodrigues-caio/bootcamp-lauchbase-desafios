@@ -1,12 +1,20 @@
 {% extends 'layout.njk' %}
 
 {% block content %}
-<form class="card" method="post" action="/teachers">
+<div class="card">
   <section style="background: url('https://source.unsplash.com/collection/9021218/500x500') no-repeat center center / cover"></section>
   <section class="details">
+  <form method="post" action="/teachers?_method=PUT">
     <h3>Cadastrar professor</h3>
-    {% include 'teachers/fields.njk' %}  
+    {% include 'teachers/fields.njk' %}
+
+    <input type="hidden" name="id" value="{{teacher.id}}">  
+  </form>
+  <form action="/teachers?_method=DELETE" class="form-delete" method="POST">
+    <input type="hidden" name="id" value={{teacher.id}}>
+    <button type="submit">Deletar</button>
+  </form>
   </section>
-</form>
+</div>
 
 {% endblock %}

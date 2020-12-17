@@ -49,9 +49,7 @@ module.exports = {
   show: (request, response) => {
     const { id } = request.params;
 
-    const teacherFounded = data.teachers.find(
-      (teacher) => teacher.id == Number(id)
-    );
+    const teacherFounded = data.teachers.find((teacher) => teacher.id == id);
 
     if (!teacherFounded) {
       return response.json({ error: 'Teacher not found.' });
@@ -86,5 +84,54 @@ module.exports = {
     };
 
     return response.render('teachers/edit', { teacher });
+  },
+
+  update: (request, response) => {
+    const { id } = request.body;
+    let index = 0;
+
+    const teacherFounded = data.teachers.find((teacher, foundIndex) => {
+      if (teacher.id == id) {
+        index = foundIndex;
+        return true;
+      }
+    });
+
+    if (!teacherFounded) {
+      return response.json({ error: 'Teacher not found.' });
+    }
+
+    const teacher = {
+      ...teacherFounded,
+      ...request.body,
+      id: Number(request.body.id),
+      birth: Date.parse(request.body.birth),
+    };
+
+    data.teachers[index] = teacher;
+
+    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
+      if (err) {
+        return response.json({ error: 'Failed in the write file.' });
+      }
+
+      return response.redirect(`/teachers/${id}`);
+    });
+  },
+
+  delete: (request, response) => {
+    const { id } = request.body;
+
+    const teachersFiltered = data.teachers.filter(
+      (teacher) => teacher.id != id
+    );
+
+    data.teachers = teachersFiltered;
+
+    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
+      if (err) return response.json({ error: 'Failed in the write file.' });
+
+      return response.redirect('/teachers');
+    });
   },
 };

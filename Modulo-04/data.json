@@ -1,16 +1,6 @@
 {
   "teachers": [
     {
-      "id": 1,
-      "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "name": "Caio Rodrigues Barbosa",
-      "birth": 849744000000,
-      "education_level": "Ensino Médio Completo",
-      "type_class": "distancia",
-      "subjects": "Matemática, Português",
-      "created_at": 1607511327623
-    },
-    {
       "id": 2,
       "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
       "name": "Teste",
@@ -39,6 +29,16 @@
       "type_class": "distancia",
       "subjects": "hasuhaushuas, hasushausha, haushaus",
       "created_at": 1608117024998
+    },
+    {
+      "id": 5,
+      "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "name": "Caio Rodrigues Barbosa",
+      "birth": 849744000000,
+      "education_level": "Ensino Médio Completo",
+      "type_class": "distancia",
+      "subjects": "Matemática, Português",
+      "created_at": 1608163018038
     }
   ]
 }

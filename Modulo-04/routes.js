@@ -22,6 +22,10 @@ routes.get('/teachers/:id', teachers.show);
 
 routes.get('/teachers/:id/edit', teachers.edit);
 
+routes.put('/teachers', teachers.update);
+
+routes.delete('/teachers', teachers.delete);
+
 routes.get((request, response) => {
   return response.status(404).render('not-found');
 });

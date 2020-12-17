@@ -30,7 +30,7 @@ module.exports = {
     const birthDate = new Date(timestamp);
 
     const year = birthDate.getUTCFullYear();
-    const month = `0${Number(birthDate.getUTCMonth() + 1)}`.split(-2);
+    const month = `0${Number(birthDate.getUTCMonth() + 1)}`.slice(-2);
     const day = `0${birthDate.getUTCDate()}`.slice(-2);
 
     return `${year}-${month}-${day}`;

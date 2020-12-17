@@ -165,6 +165,7 @@ a.button {
   font-weight: bold;
   font-size: 16px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 a.button {
@@ -172,4 +173,10 @@ a.button {
   text-align: center;
   text-decoration: none;
   background-color: #212d97;
+}
+
+/* form delete */
+.form-delete button[type='submit'] {
+  margin-top: 8px;
+  background-color: lightseagreen;
 }

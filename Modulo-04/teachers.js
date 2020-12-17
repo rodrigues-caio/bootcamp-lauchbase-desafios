@@ -4,6 +4,17 @@ const data = require('./data.json');
 const { age, date } = require('./utils');
 
 module.exports = {
+  index: (request, response) => {
+    const teachersUpdated = data.teachers.map((teacher) => {
+      return {
+        ...teacher,
+        subjects: teacher.subjects.split(','),
+      };
+    });
+
+    return response.render('teachers/index', { teachers: teachersUpdated });
+  },
+
   create: (request, response) => {
     const keys = Object.keys(request.body);
 

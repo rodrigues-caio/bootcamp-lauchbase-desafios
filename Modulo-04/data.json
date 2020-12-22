@@ -1,44 +1,52 @@
 {
-  "teachers": [
+  "students": [
+    {
+      "id": 1,
+      "birth": 850176000000,
+      "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "name": "Atualizado de novooo",
+      "email": "atualizadooo@hotmail.com",
+      "schoolYear": "3º ano do ensino medio",
+      "weeklyWorkload": "80000"
+    },
     {
       "id": 2,
+      "birth": "1995-05-12",
       "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "name": "Teste",
-      "birth": 850608000000,
-      "education_level": "Ensino Médio Completo",
-      "type_class": "presencial",
-      "subjects": "Matemática",
-      "created_at": 1607944921073
+      "name": "Caio Rodrigues Barbosa",
+      "email": "caaaio2010@hotmail.com",
+      "schoolYear": "9º ano do ensino fundamental",
+      "weeklyWorkload": "80"
     },
     {
       "id": 3,
       "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "name": "TESTE",
-      "birth": 849744000000,
-      "education_level": "Doutorado",
-      "type_class": "presencial",
-      "subjects": "Matemática",
-      "created_at": 1608116580979
+      "name": "Pra valer",
+      "email": "prabeler@hootm.com",
+      "birth": 946684800000,
+      "schoolYear": "8º ano do ensino fundamental",
+      "weeklyWorkload": "44"
     },
     {
       "id": 4,
       "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "name": "Hiii",
-      "birth": 949449600000,
-      "education_level": "Mestrado",
+      "name": "Caio Rodrigues Barbosa",
+      "email": "caaaio2010@hotmail.com",
+      "birth": 946684800000,
+      "schoolYear": "5º ano do ensino fundamental",
+      "weeklyWorkload": "50"
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "name": "Reinaldo",
+      "birth": 849744000000,
+      "education_level": "Doutorado",
       "type_class": "distancia",
       "subjects": "hasuhaushuas, hasushausha, haushaus",
-      "created_at": 1608117024998
-    },
-    {
-      "id": 5,
-      "avatar_url": "https://images.unsplash.com/photo-1564442038901-4f9a19d3d456?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-      "name": "Caio Rodrigues Barbosa",
-      "birth": 849744000000,
-      "education_level": "Ensino Médio Completo",
-      "type_class": "distancia",
-      "subjects": "Matemática, Português",
-      "created_at": 1608163018038
+      "created_at": 1608650145422
     }
   ]
 }

@@ -237,7 +237,8 @@ tbody tr td:first-child span {
   box-shadow: 3px 1px 6px -4px black;
 }
 
-tbody tr td:last-child a {
+tbody tr td:last-child a,
+.table-container > a {
   background-color: #f11e81e8;
   padding: 8px 16px;
   text-decoration: none;
@@ -251,4 +252,9 @@ tbody tr td:last-child a {
 tbody tr td:nth-child(2) span {
   color: white;
   background-color: rgb(92, 134, 49);
+}
+
+.table-container > a {
+  display: inline-block;
+  margin-bottom: 16px;
 }

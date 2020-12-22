@@ -1,7 +1,7 @@
 const fs = require('fs');
-const data = require('./data.json');
+const data = require('../data.json');
 
-const { age, date } = require('./utils');
+const { age, date } = require('../utils');
 
 module.exports = {
   index: (request, response) => {
@@ -16,6 +16,10 @@ module.exports = {
   },
 
   create: (request, response) => {
+    return response.render('teachers/create');
+  },
+
+  post: (request, response) => {
     const keys = Object.keys(request.body);
 
     for (key of keys) {
@@ -53,7 +57,7 @@ module.exports = {
     fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
       if (err) return response.json({ error: 'Failed in write file.' });
 
-      return response.redirect('/teachers');
+      return response.redirect(`/teachers/${id}`);
     });
   },
 
@@ -91,7 +95,7 @@ module.exports = {
 
     const teacher = {
       ...teacherFounded,
-      birth: date(teacherFounded.birth),
+      birth: date(teacherFounded.birth).iso,
     };
 
     return response.render('teachers/edit', { teacher });

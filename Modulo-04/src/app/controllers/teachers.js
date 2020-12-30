@@ -1,7 +1,7 @@
 const fs = require('fs');
 const data = require('../../data.json');
 
-const { age, date } = require('../lib/utils');
+const { age, date } = require('../../lib/utils');
 
 module.exports = {
   index(request, response) {

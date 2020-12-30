@@ -1,17 +1,17 @@
 const fs = require('fs');
-const data = require('../data.json');
-const { date } = require('../utils');
+const data = require('../../data.json');
+const { date } = require('../lib/utils');
 
 module.exports = {
-  index: (request, response) => {
+  index(request, response) {
     return response.render('students/index', { students: data.students });
   },
 
-  create: (request, response) => {
+  create(request, response) {
     return response.render('students/create');
   },
 
-  post: (request, response) => {
+  post(request, response) {
     const keys = Object.keys(request.body);
 
     for (let key of keys) {
@@ -45,7 +45,7 @@ module.exports = {
     });
   },
 
-  show: (request, response) => {
+  show(request, response) {
     const { id } = request.params;
 
     const studentFound = data.students.find((student) => student.id == id);
@@ -62,7 +62,7 @@ module.exports = {
     return response.render('students/show', { student });
   },
 
-  edit: (request, response) => {
+  edit(request, response) {
     const { id } = request.params;
 
     const studentFound = data.students.find((student) => student.id == id);
@@ -79,7 +79,7 @@ module.exports = {
     return response.render('students/edit', { student });
   },
 
-  update: (request, response) => {
+  update(request, response) {
     const keys = Object.keys(request.body);
 
     for (let key of keys) {
@@ -120,7 +120,7 @@ module.exports = {
     });
   },
 
-  delete: (request, response) => {
+  delete(request, response) {
     const { id } = request.body;
 
     const studentsFiltered = data.students.filter(

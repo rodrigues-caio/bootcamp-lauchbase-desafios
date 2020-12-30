@@ -1,10 +1,10 @@
 const fs = require('fs');
-const data = require('../data.json');
+const data = require('../../data.json');
 
-const { age, date } = require('../utils');
+const { age, date } = require('../lib/utils');
 
 module.exports = {
-  index: (request, response) => {
+  index(request, response) {
     const teachersUpdated = data.teachers.map((teacher) => {
       return {
         ...teacher,
@@ -15,11 +15,11 @@ module.exports = {
     return response.render('teachers/index', { teachers: teachersUpdated });
   },
 
-  create: (request, response) => {
+  create(request, response) {
     return response.render('teachers/create');
   },
 
-  post: (request, response) => {
+  post(request, response) {
     const keys = Object.keys(request.body);
 
     for (key of keys) {
@@ -61,7 +61,7 @@ module.exports = {
     });
   },
 
-  show: (request, response) => {
+  show(request, response) {
     const { id } = request.params;
 
     const teacherFounded = data.teachers.find((teacher) => teacher.id == id);
@@ -82,7 +82,7 @@ module.exports = {
     return response.render('teachers/show', { teacher });
   },
 
-  edit: (request, response) => {
+  edit(request, response) {
     const { id } = request.params;
 
     const teacherFounded = data.teachers.find(
@@ -101,7 +101,7 @@ module.exports = {
     return response.render('teachers/edit', { teacher });
   },
 
-  update: (request, response) => {
+  update(request, response) {
     const { id } = request.body;
     let index = 0;
 
@@ -134,7 +134,7 @@ module.exports = {
     });
   },
 
-  delete: (request, response) => {
+  delete(request, response) {
     const { id } = request.body;
 
     const teachersFiltered = data.teachers.filter(

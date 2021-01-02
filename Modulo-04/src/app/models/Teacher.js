@@ -53,4 +53,8 @@ module.exports = {
       callback(results.rows[0]);
     });
   },
+
+  update(data, callback) {
+    const query = 'UPDATE teachers SET';
+  },
 };

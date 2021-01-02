@@ -10,4 +10,14 @@ module.exports = {
       callback(results.rows);
     });
   },
+
+  find(id, callback) {
+    const query = 'SELECT * FROM students WHERE id = $1';
+
+    db.query(query, [id], (err, results) => {
+      if (err) throw `Database Error: ${err}`;
+
+      callback(results.rows[0]);
+    });
+  },
 };

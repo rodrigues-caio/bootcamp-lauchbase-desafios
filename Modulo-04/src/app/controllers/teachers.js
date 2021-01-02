@@ -1,18 +1,21 @@
 const fs = require('fs');
-const data = require('../../data.json');
-
+const Teacher = require('../models/Teacher');
 const { age, date } = require('../../lib/utils');
 
 module.exports = {
   index(request, response) {
-    const teachersUpdated = data.teachers.map((teacher) => {
-      return {
-        ...teacher,
-        subjects: teacher.subjects.split(','),
-      };
-    });
+    Teacher.all((teachers) => {
+      const teachersUpdated = teachers.map((teacher) => {
+        if (teacher) {
+          return {
+            ...teacher,
+            subjects_taught: teacher.subjects_taught.split(','),
+          };
+        }
+      });
 
-    return response.render('teachers/index', { teachers: teachersUpdated });
+      return response.render('teachers/index', { teachers: teachersUpdated });
+    });
   },
 
   create(request, response) {
@@ -28,36 +31,15 @@ module.exports = {
       }
     }
 
-    let {
-      avatar_url,
-      name,
-      birth,
-      education_level,
-      type_class,
-      subjects,
-    } = request.body;
+    let { birth_date } = request.body;
 
-    const id = data.teachers.length + 1;
-    birth = Date.parse(birth);
-    const created_at = Date.now();
+    birth_date = date(Date.parse(birth_date)).iso;
+    const created_at = date(Date.now()).iso;
 
-    const teacher = {
-      id,
-      avatar_url,
-      name,
-      birth,
-      education_level,
-      type_class,
-      subjects,
-      created_at,
-    };
+    const teacher = { ...request.body, birth_date, created_at };
 
-    data.teachers.push(teacher);
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
-      if (err) return response.json({ error: 'Failed in write file.' });
-
-      return response.redirect(`/teachers/${id}`);
+    Teacher.create(teacher, (teacher_id) => {
+      return response.redirect(`/teachers/${teacher_id}`);
     });
   },
 

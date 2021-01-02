@@ -27,7 +27,7 @@
   <div>
     <input 
       type="date" 
-      name="birth"
+      name="birth_date"
       value="{{ teacher.birth }}"
     >
   </div>
@@ -77,8 +77,8 @@
     <span>
       <input 
         type="radio" 
-        name="type_class" 
-        id="type_class" 
+        name="class_type" 
+        id="class_type" 
         value="presencial"
         {% if teacher.type_class == 'presencial' %}
         checked
@@ -91,8 +91,8 @@
     <span>
       <input 
         type="radio" 
-        name="type_class" 
-        id="type_class"
+        name="class_type" 
+        id="class_type"
         value="distancia"
         {% if teacher.type_class == 'distancia' %}
           checked
@@ -108,7 +108,7 @@
   <div>
     <input 
       type="text" 
-      name="subjects" 
+      name="subjects_taught" 
       placeholder="Separe as matérias por vírgula"
       value="{{teacher.subjects}}"
     >

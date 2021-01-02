@@ -47,16 +47,17 @@ module.exports = {
     const { id } = request.params;
 
     Teacher.find(id, (teacher) => {
+      if (teacher) {
+        const teacherUpdate = {
+          ...teacher,
+          age: age(teacher.birth_date),
+          subjects_taught: teacher.subjects_taught.split(','),
+          created_at: date(teacher.created_at).format,
+        };
 
-      const teacherUpdate = {
-        ...teacher,
-        age: age(teacher.birth),
-        subjects_taught: teacher.subjects_taught.split(','),
-        created_at: date(teacher.created_at).format,
-        },
-      
         return response.render('teachers/show', { teacher: teacherUpdate });
-      });
+      }
+    });
   },
 
   edit(request, response) {

@@ -39,6 +39,7 @@ module.exports = {
       day: `${day}`,
       month: `${month}`,
       year: `${year}`,
+      format: `${day}/${month}/${year}`,
     };
   },
 };

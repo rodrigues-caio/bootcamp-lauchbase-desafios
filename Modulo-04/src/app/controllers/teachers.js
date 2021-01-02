@@ -46,22 +46,17 @@ module.exports = {
   show(request, response) {
     const { id } = request.params;
 
-    const teacherFounded = data.teachers.find((teacher) => teacher.id == id);
+    Teacher.find(id, (teacher) => {
 
-    if (!teacherFounded) {
-      return response.json({ error: 'Teacher not found.' });
-    }
-
-    const teacher = {
-      ...teacherFounded,
-      age: age(teacherFounded.birth),
-      subjects: teacherFounded.subjects.split(','),
-      created_at: Intl.DateTimeFormat('en-GB').format(
-        teacherFounded.created_at
-      ),
-    };
-
-    return response.render('teachers/show', { teacher });
+      const teacherUpdate = {
+        ...teacher,
+        age: age(teacher.birth),
+        subjects_taught: teacher.subjects_taught.split(','),
+        created_at: date(teacher.created_at).format,
+        },
+      
+        return response.render('teachers/show', { teacher: teacherUpdate });
+      });
   },
 
   edit(request, response) {

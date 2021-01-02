@@ -57,4 +57,6 @@ module.exports = {
   update(data, callback) {
     const query = 'UPDATE teachers SET';
   },
+
+  delete() {},
 };

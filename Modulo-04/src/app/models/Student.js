@@ -20,4 +20,8 @@ module.exports = {
       callback(results.rows[0]);
     });
   },
+
+  create(data, callback) {
+    const query = '';
+  },
 };

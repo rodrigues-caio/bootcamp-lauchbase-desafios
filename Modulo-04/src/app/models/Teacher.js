@@ -58,5 +58,13 @@ module.exports = {
     const query = 'UPDATE teachers SET';
   },
 
-  delete() {},
+  delete(id, callback) {
+    const query = 'DELETE FROM teachers WHERE id = $1';
+
+    db.query(query, [id], (err, results) => {
+      if (err) throw `Database Error: ${err}`;
+
+      callback();
+    });
+  },
 };

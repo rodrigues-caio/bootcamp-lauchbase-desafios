@@ -1,9 +1,12 @@
 const fs = require('fs');
+const Student = require('../models/Student');
 const { date } = require('../../lib/utils');
 
 module.exports = {
   index(request, response) {
-    return response.render('students/index', { students: data.students });
+    Student.all((students) => {
+      return response.render('students/index', { students });
+    });
   },
 
   create(request, response) {

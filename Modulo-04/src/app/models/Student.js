@@ -23,5 +23,7 @@ module.exports = {
 
   create(data, callback) {
     const query = '';
+
+    const values = [];
   },
 };

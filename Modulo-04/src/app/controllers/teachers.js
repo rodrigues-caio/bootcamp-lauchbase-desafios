@@ -31,15 +31,8 @@ module.exports = {
       }
     }
 
-    let { birth_date } = request.body;
-
-    birth_date = date(Date.parse(birth_date)).iso;
-    const created_at = date(Date.now()).iso;
-
-    const teacher = { ...request.body, birth_date, created_at };
-
-    Teacher.create(teacher, (teacher_id) => {
-      return response.redirect(`/teachers/${teacher_id}`);
+    Teacher.create(request.body, (teacher) => {
+      return response.redirect(`/teachers/${teacher.id}`);
     });
   },
 
@@ -47,36 +40,26 @@ module.exports = {
     const { id } = request.params;
 
     Teacher.find(id, (teacher) => {
-      if (teacher) {
-        const teacherUpdate = {
-          ...teacher,
-          age: age(teacher.birth_date),
-          subjects_taught: teacher.subjects_taught.split(','),
-          created_at: date(teacher.created_at).format,
-        };
+      if (!teacher) return response.json({ error: 'Teacher not found' });
 
-        return response.render('teachers/show', { teacher: teacherUpdate });
-      }
+      teacher.age = age(teacher.birth_date);
+      teacher.subjects_taught = teacher.subjects_taught.split(',');
+      teacher.created_at = date(teacher.created_at).format;
+
+      return response.render('teachers/show', { teacher });
     });
   },
 
   edit(request, response) {
     const { id } = request.params;
 
-    const teacherFounded = data.teachers.find(
-      (teacher) => teacher.id == Number(id)
-    );
+    Teacher.find(id, (teacher) => {
+      if (!teacher) return response.json({ error: 'Teacher not found' });
 
-    if (!teacherFounded) {
-      return response.json({ error: 'Teacher not found' });
-    }
+      teacher.birth_date = date(teacher.birth_date).iso;
 
-    const teacher = {
-      ...teacherFounded,
-      birth: date(teacherFounded.birth).iso,
-    };
-
-    return response.render('teachers/edit', { teacher });
+      return response.render('teachers/edit', { teacher });
+    });
   },
 
   update(request, response) {

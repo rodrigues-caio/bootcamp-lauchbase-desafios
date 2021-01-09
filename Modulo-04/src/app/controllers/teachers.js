@@ -96,17 +96,7 @@ module.exports = {
   },
 
   delete(request, response) {
-    const { id } = request.body;
-
-    const teachersFiltered = data.teachers.filter(
-      (teacher) => teacher.id != id
-    );
-
-    data.teachers = teachersFiltered;
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
-      if (err) return response.json({ error: 'Failed in the write file.' });
-
+    Teacher.delete(request.body.id, () => {
       return response.redirect('/teachers');
     });
   },

@@ -22,29 +22,7 @@ module.exports = {
       }
     }
 
-    let id = 1;
-
-    const lastStudent = data.students[data.students.length - 1];
-
-    if (lastStudent) {
-      id = lastStudent.id + 1;
-    }
-
-    let birth = Date.parse(request.body.birth);
-
-    const student = {
-      id,
-      ...request.body,
-      birth,
-    };
-
-    data.students.push(student);
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
-      if (err) return response.json({ error: 'Error in write file.' });
-
-      return response.redirect(`/students/${id}`);
-    });
+    return response.redirect(`/students/${id}`);
   },
 
   show(request, response) {

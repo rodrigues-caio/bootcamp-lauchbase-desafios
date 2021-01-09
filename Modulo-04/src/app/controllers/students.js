@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Student = require('../models/Student');
-const { date } = require('../../lib/utils');
+const { date, levelSchool } = require('../../lib/utils');
 
 module.exports = {
   index(request, response) {
@@ -22,24 +22,20 @@ module.exports = {
       }
     }
 
-    return response.redirect(`/students/${id}`);
+    Student.create(request.body, (student) => {
+      return response.redirect(`/students/${student.id}`);
+    });
   },
 
   show(request, response) {
     const { id } = request.params;
 
-    const studentFound = data.students.find((student) => student.id == id);
+    Student.find(id, (student) => {
+      student.birth = date(student.birth).birthDay;
+      student.school_year = levelSchool(student.school_year);
 
-    if (!studentFound) {
-      return response.json({ error: 'Student not found.' });
-    }
-
-    const student = {
-      ...studentFound,
-      birth: date(studentFound.birth).birthDay,
-    };
-
-    return response.render('students/show', { student });
+      return response.render('students/show', { student });
+    });
   },
 
   edit(request, response) {

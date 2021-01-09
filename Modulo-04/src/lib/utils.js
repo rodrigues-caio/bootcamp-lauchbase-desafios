@@ -42,4 +42,39 @@ module.exports = {
       format: `${day}/${month}/${year}`,
     };
   },
+
+  levelSchool: (schoolYear) => {
+    let levelShool;
+
+    switch (schoolYear) {
+      case '5EF':
+        levelShool = '5º ano do ensino fundamental';
+        break;
+      case '6EF':
+        levelShool = '6º ano do ensino fundamental';
+        break;
+      case '7EF':
+        levelShool = '7º ano do ensino fundamental';
+        break;
+      case '8EF':
+        levelShool = '8º ano do ensino fundamental';
+        break;
+      case '9EF':
+        levelShool = '9º ano do ensino fundamental';
+        break;
+      case '1EM':
+        levelShool = '1º ano do ensino médio';
+        break;
+      case '2EM':
+        levelShool = '2º ano do ensino médio';
+        break;
+      case '3EM':
+        levelShool = '3º ano do ensino médio';
+        break;
+      default:
+        break;
+    }
+
+    return schoolYear;
+  },
 };

@@ -63,35 +63,8 @@ module.exports = {
   },
 
   update(request, response) {
-    const { id } = request.body;
-    let index = 0;
-
-    const teacherFounded = data.teachers.find((teacher, foundIndex) => {
-      if (teacher.id == id) {
-        index = foundIndex;
-        return true;
-      }
-    });
-
-    if (!teacherFounded) {
-      return response.json({ error: 'Teacher not found.' });
-    }
-
-    const teacher = {
-      ...teacherFounded,
-      ...request.body,
-      id: Number(request.body.id),
-      birth: Date.parse(request.body.birth),
-    };
-
-    data.teachers[index] = teacher;
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
-      if (err) {
-        return response.json({ error: 'Failed in the write file.' });
-      }
-
-      return response.redirect(`/teachers/${id}`);
+    Teacher.update(request.body, () => {
+      return response.redirect(`/teachers/${request.body.id}`);
     });
   },
 

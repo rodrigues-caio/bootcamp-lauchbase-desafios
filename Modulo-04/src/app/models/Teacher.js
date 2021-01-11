@@ -40,7 +40,7 @@ module.exports = {
 
   update(data, callback) {
     const query = `
-      UPDATE teacher SET
+      UPDATE teachers SET
       avatar_url=($1),
       name=($2),
       birth_date=($3),

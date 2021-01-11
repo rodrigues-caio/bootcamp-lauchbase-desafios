@@ -50,7 +50,8 @@ module.exports = {
   },
 
   update(data, callback) {
-    const query = `UPDATE students SET (
+    const query = `
+    UPDATE students SET
       avatar_url=($1),
       name=($2),
       email=($3),
@@ -58,7 +59,7 @@ module.exports = {
       school_year=($5),
       weekly_workload=($6)
       WHERE id = $7
-    )`;
+    `;
 
     const values = [
       data.avatar_url,

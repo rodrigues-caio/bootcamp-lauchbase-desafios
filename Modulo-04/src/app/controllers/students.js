@@ -34,6 +34,8 @@ module.exports = {
       student.birth = date(student.birth).birthDay;
       student.school_year = levelSchool(student.school_year);
 
+      console.log(levelSchool(student.school_year));
+
       return response.render('students/show', { student });
     });
   },
@@ -41,18 +43,13 @@ module.exports = {
   edit(request, response) {
     const { id } = request.params;
 
-    const studentFound = data.students.find((student) => student.id == id);
+    Student.find(id, (student) => {
+      if (!student) return response.json({ error: 'Student no found.' });
 
-    if (!studentFound) {
-      return response.json({ error: 'Student not found' });
-    }
+      student.birth = date(student.birth).iso;
 
-    const student = {
-      ...studentFound,
-      birth: date(studentFound.birth).iso,
-    };
-
-    return response.render('students/edit', { student });
+      return response.render('students/edit', { student });
+    });
   },
 
   update(request, response) {
@@ -64,35 +61,8 @@ module.exports = {
       }
     }
 
-    const { id } = request.body;
-    let index = 0;
-
-    const studentFounded = data.students.find((student, foundIndex) => {
-      if (student.id == id) {
-        index = foundIndex;
-        return true;
-      }
-    });
-
-    if (!studentFounded) {
-      return response.json({ error: 'Student not found.' });
-    }
-
-    const student = {
-      ...studentFounded,
-      ...request.body,
-      id: Number(request.body.id),
-      birth: Date.parse(request.body.birth),
-    };
-
-    data.students[index] = student;
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
-      if (err) {
-        return response.json({ error: 'Error in the write file.' });
-      }
-
-      return response.redirect(`/students/${id}`);
+    Student.update(request.body, () => {
+      return response.redirect(`/students/${request.body.id}`);
     });
   },
 

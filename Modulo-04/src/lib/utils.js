@@ -44,7 +44,7 @@ module.exports = {
   },
 
   levelSchool: (schoolYear) => {
-    let levelShool;
+    let levelShool = '';
 
     switch (schoolYear) {
       case '5EF':
@@ -71,10 +71,8 @@ module.exports = {
       case '3EM':
         levelShool = '3º ano do ensino médio';
         break;
-      default:
-        break;
     }
 
-    return schoolYear;
+    return levelShool;
   },
 };

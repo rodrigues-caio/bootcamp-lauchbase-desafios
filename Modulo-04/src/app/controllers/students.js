@@ -69,11 +69,7 @@ module.exports = {
   delete(request, response) {
     const { id } = request.body;
 
-    const studentsFiltered = data.students.filter(
-      (student) => student.id != id
-    );
-
-    data.students = studentsFiltered;
+    Student.data.students = studentsFiltered;
 
     fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
       if (err) {

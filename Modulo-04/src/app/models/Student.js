@@ -78,5 +78,11 @@ module.exports = {
     });
   },
 
-  delete(id, callback) {},
+  delete(id, callback) {
+    db.query(`DELETE FROM students WHERE id = $1`, [id], (err, results) => {
+      if (err) throw `Database Error: ${err}`;
+
+      callback();
+    });
+  },
 };

@@ -5,7 +5,16 @@ const { date, levelSchool } = require('../../lib/utils');
 module.exports = {
   index(request, response) {
     Student.all((students) => {
-      return response.render('students/index', { students });
+      const studentsUpdate = students.map((student) => {
+        if (student) {
+          return {
+            ...student,
+            school_year: levelSchool(student.school_year),
+          };
+        }
+      });
+
+      return response.render('students/index', { students: studentsUpdate });
     });
   },
 
@@ -67,13 +76,7 @@ module.exports = {
   delete(request, response) {
     const { id } = request.body;
 
-    Student.data.students = studentsFiltered;
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
-      if (err) {
-        return response.json({ error: 'Error in the write file.' });
-      }
-
+    Student.delete(id, () => {
       return response.redirect('/students');
     });
   },

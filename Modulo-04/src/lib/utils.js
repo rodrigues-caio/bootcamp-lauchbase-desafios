@@ -73,6 +73,6 @@ module.exports = {
         break;
     }
 
-    console.log(levelShool);
+    return levelShool;
   },
 };

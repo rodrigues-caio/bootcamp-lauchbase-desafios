@@ -34,8 +34,6 @@ module.exports = {
       student.birth = date(student.birth).birthDay;
       student.school_year = levelSchool(student.school_year);
 
-      console.log(levelSchool(student.school_year));
-
       return response.render('students/show', { student });
     });
   },

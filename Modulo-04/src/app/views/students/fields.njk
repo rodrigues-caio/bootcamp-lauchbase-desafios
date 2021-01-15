@@ -121,4 +121,21 @@
   </div>
 </div>
 
+<div class="item">
+  <div>Teacher</div>
+  <div>
+    <select name="school_year">
+      <option 
+        value="5EF" 
+        {% if student.school_year == '5EF' %}
+          selected
+        {% else %}
+          selected
+        {% endif %}
+      > 5º ano do ensino fundamental
+      
+    </select>
+  </div>
+</div>
+
 <button type="submit">Salvar</button>

@@ -258,3 +258,27 @@ tbody tr td:nth-child(2) span {
   display: inline-block;
   margin-bottom: 16px;
 }
+
+/* === FILTERS === */
+.table-container .header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.table-container .header .button {
+  margin: 0;
+  width: 120px;
+}
+
+.table-container .header form {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+}
+
+.table-container .header form button {
+  margin: 0;
+  margin-left: 8px;
+}

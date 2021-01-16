@@ -124,16 +124,17 @@
 <div class="item">
   <div>Teacher</div>
   <div>
-    <select name="school_year">
+    <select name="teacher">
       <option 
-        value="5EF" 
-        {% if student.school_year == '5EF' %}
+        value="teacher.id" 
+        {% if student.teacher_id == teacher.id %}
           selected
         {% else %}
           selected
         {% endif %}
-      > 5º ano do ensino fundamental
-      
+      > 
+      {{teacher.name}}
+      </option>
     </select>
   </div>
 </div>

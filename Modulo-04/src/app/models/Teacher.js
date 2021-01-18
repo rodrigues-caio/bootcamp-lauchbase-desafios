@@ -39,6 +39,8 @@ module.exports = {
     });
   },
 
+  findBy(filter, callback) {},
+
   find(id, callback) {
     db.query(`SELECT * FROM teachers WHERE id = $1`, [id], (err, results) => {
       if (err) throw `Database Error: ${err}`;

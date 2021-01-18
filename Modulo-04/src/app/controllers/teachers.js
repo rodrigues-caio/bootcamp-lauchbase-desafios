@@ -5,19 +5,23 @@ const { age, date } = require('../../lib/utils');
 module.exports = {
   index(request, response) {
     const { filter } = request.query;
-    Teacher.findBy(filter, (teachers) => {
-      const teachersUpdated = teachers.map((teacher) => {
-        if (teacher) {
-          return {
-            ...teacher,
-            subjects_taught: teacher.subjects_taught.split(','),
-          };
-        }
-      });
 
-      return response.render('teachers/index', { teachers: teachersUpdated });
-    });
     if (filter) {
+      Teacher.findBy(filter, (teachers) => {
+        const teachersUpdated = teachers.map((teacher) => {
+          if (teacher) {
+            return {
+              ...teacher,
+              subjects_taught: teacher.subjects_taught.split(','),
+            };
+          }
+        });
+
+        return response.render('teachers/index', {
+          teachers: teachersUpdated,
+          filter,
+        });
+      });
     } else {
       Teacher.all((teachers) => {
         const teachersUpdated = teachers.map((teacher) => {

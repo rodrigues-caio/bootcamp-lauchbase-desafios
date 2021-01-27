@@ -6,3 +6,21 @@ for (let link of links) {
     link.classList.add('active');
   }
 }
+
+const pages = [];
+let pagesActual = 15,
+  totalPages = 20;
+
+for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
+  const firstAndLastPages = currentPage === 1 || currentPage == totalPages;
+  const afterPagesOfPageCurrent = currentPage <= pagesActual + 2;
+
+  if (
+    firstAndLastPages ||
+    afterPagesOfPageCurrent ||
+    currentPage >= pagesActual - 2
+  ) {
+    pages.push(currentPage);
+  }
+}
+console.log(pages);

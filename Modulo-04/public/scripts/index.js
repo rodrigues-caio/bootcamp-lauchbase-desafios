@@ -36,11 +36,12 @@ function paginate(pagesActual, totalPages) {
 }
 
 function createPagination(pagination) {
-  let page = +pagination.dataset.page;
-  let total = +pagination.dataset.total;
-  let filter = pagination.dataset.filter;
+  const page = +pagination.dataset.page;
+  const total = +pagination.dataset.total;
+  const filter = pagination.dataset.filter;
 
   const pages = paginate(page, total);
+  console.log(pages);
 
   let elements = '';
 

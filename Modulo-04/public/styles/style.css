@@ -301,7 +301,7 @@ tbody tr td:nth-child(2) span {
 
 .pagination a,
 .pagination span {
-  color: var(--primary-color);
+  color: rgb(202, 22, 157);
   text-decoration: none;
   margin-right: 16px;
 }

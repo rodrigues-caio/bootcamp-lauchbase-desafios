@@ -112,7 +112,7 @@ module.exports = {
     if (filter) {
       filterQuery = `
       WHERE teachers.name ILIKE '%${filter}%'
-      OR teachers.subjects_taught '%${filter}%'
+      OR teachers.subjects_taught ILIKE '%${filter}%'
       `;
 
       totalQuery = `
@@ -123,7 +123,7 @@ module.exports = {
     }
 
     query = `
-     SELECT teachers.*, ${totalQuery}, count(students) AS total_students
+      SELECT teachers.*, ${totalQuery}, count(students) AS total_students
       FROM teachers LEFT JOIN students ON teachers.id = students.teacher_id
       ${filterQuery}
       GROUP BY teachers.id

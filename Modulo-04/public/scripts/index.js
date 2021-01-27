@@ -14,11 +14,11 @@ let pagesActual = 15,
 for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
   const firstAndLastPages = currentPage === 1 || currentPage == totalPages;
   const afterPagesOfPageCurrent = currentPage <= pagesActual + 2;
+  const beforePagesOfPageCurrent = currentPage >= pagesActual - 2;
 
   if (
     firstAndLastPages ||
-    afterPagesOfPageCurrent ||
-    currentPage >= pagesActual - 2
+    (afterPagesOfPageCurrent && beforePagesOfPageCurrent)
   ) {
     pages.push(currentPage);
   }

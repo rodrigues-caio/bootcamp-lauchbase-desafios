@@ -4,18 +4,41 @@ const { date, levelSchool } = require('../../lib/utils');
 
 module.exports = {
   index(request, response) {
-    Student.all((students) => {
-      const studentsUpdate = students.map((student) => {
-        if (student) {
-          return {
-            ...student,
-            school_year: levelSchool(student.school_year),
-          };
-        }
-      });
+    let { filter, page, limit } = request.query;
 
-      return response.render('students/index', { students: studentsUpdate });
-    });
+    page = page || 1;
+    limit = limit || 2;
+    let offset = limit * (page - 1);
+
+    const params = {
+      page,
+      filter,
+      limit,
+      offset,
+      callback(students) {
+        const pagination = {
+          page,
+          total: Math.ceil(students[0].total / limit),
+        };
+
+        const studentsUpdate = students.map((student) => {
+          if (student) {
+            return {
+              ...student,
+              school_year: levelSchool(student.school_year),
+            };
+          }
+        });
+
+        return response.render('students/index', {
+          students: studentsUpdate,
+          filter,
+          pagination,
+        });
+      },
+    };
+
+    Student.paginate(params);
   },
 
   create(request, response) {

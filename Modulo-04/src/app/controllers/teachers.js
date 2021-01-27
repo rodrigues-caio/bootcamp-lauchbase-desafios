@@ -4,9 +4,32 @@ const { age, date } = require('../../lib/utils');
 
 module.exports = {
   index(request, response) {
-    const { filter } = request.query;
+    const { filter, page, limit } = request.query;
 
-    if (filter) {
+    page = page || 1;
+    limit = limit || 2;
+    let offset = limit * (page - 1);
+
+    const params = {
+      filter,
+      page,
+      limit,
+      offset,
+      callback(teachers) {
+        const pagination = {
+          page,
+          total: Math.ceil(teachers[0].total / limit),
+        };
+
+        return response.render('teachers/index', {
+          teachers,
+          filter,
+          pagination,
+        });
+      },
+    };
+
+    /*if (filter) {
       Teacher.findBy(filter, (teachers) => {
         const teachersUpdated = teachers.map((teacher) => {
           if (teacher) {
@@ -35,7 +58,7 @@ module.exports = {
 
         return response.render('teachers/index', { teachers: teachersUpdated });
       });
-    }
+    }*/
   },
 
   create(request, response) {

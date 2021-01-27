@@ -264,7 +264,6 @@ tbody tr td:nth-child(2) span {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin-bottom: 32px;
 }
 
 .table-container .header .button {
@@ -281,4 +280,33 @@ tbody tr td:nth-child(2) span {
 .table-container .header form button {
   margin: 0;
   margin-left: 8px;
+}
+
+/* === PAGINATION === */
+.table-container {
+  display: grid;
+  grid-template: 64px 1fr 24px / 1fr;
+}
+
+.table-container .header {
+  align-self: start;
+  margin: 0;
+}
+
+.table-container .pagination {
+  margin: 0;
+  align-self: flex-end;
+  justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-right: 16px;
+}
+
+.pagination a:hover {
+  filter: brightness(0.3);
+  border-bottom: 1px solid var(--primary-color);
 }

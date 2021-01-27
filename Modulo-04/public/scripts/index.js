@@ -36,9 +36,9 @@ function paginate(pagesActual, totalPages) {
 }
 
 function createPagination(pagination) {
-  const page = pagination.dataset.page;
-  const total = pagination.dataset.page;
-  const filter = pagination.dataset.page;
+  let page = +pagination.dataset.page;
+  let total = +pagination.dataset.total;
+  let filter = pagination.dataset.filter;
 
   const pages = paginate(page, total);
 
